@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "433354324241",
+    "project_id": "thaphuong-325ce",
+    "storage_bucket": "thaphuong-325ce.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:433354324241:android:a590ba0750a2190f9974b0",
+        "android_client_info": {
+          "package_name": "com.example.thaphuong"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWqMlYrj8TjJ5aVOTB4CaZWLH1Bgy2sFA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

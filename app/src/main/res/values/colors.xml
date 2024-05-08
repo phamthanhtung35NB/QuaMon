@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="yellow">#FFFFEB3B</color>
+    <color name="gray">#FF9E9E9E</color>
+    <color name="red">#FFFF0000</color>
+    <color name="blue">#FF0000FF</color>
+    <color name="green">#FF00FF00</color>
+    <color name="orange">#FFFF9800</color>
+    <color name="purple">#FF9C27B0</color>
+    <color name="pink">#FFC2185B</color>
+    <color name="brown">#FF795548</color>
+    <color name="cyan">#FF00BCD4</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="lavender">#8692f7</color>
+
+
+
+    <!-- Colors for light theme -->
+    <color name="colorPrimaryLight">#0668e1</color>
+    <color name="colorPrimaryVariantLight">#f07c41</color>
+    <color name="colorSecondaryLight">#0450ae</color>
+    <color name="colorSecondaryVariantLight">#9dbcc2</color>
+    <color name="colorBackgroundLight">#c7eef5</color>
+    <color name="colorSurfaceLight">#ffffff</color>
+    <color name="colorOnPrimaryLight">#ffffff</color>
+    <color name="colorOnSecondaryLight">#022249</color>
+    <color name="colorOnBackgroundLight">#022249</color>
+    <color name="colorOnSurfaceLight">#000409</color>
+    <color name="colorErrorLight">#B00020</color>
+    <color name="colorOnErrorLight">#FFFFFF</color>
+
+    <!-- Colors for dark theme -->
+    <color name="colorPrimaryDark">#022249</color>
+    <color name="colorPrimaryVariantDark">#f07c41</color>
+    <color name="colorSecondaryDark">#55bdca</color>
+    <color name="colorSecondaryVariantDark">#0D8B8B</color>
+    <color name="colorBackgroundDark">#383D3E</color>
+    <color name="colorSurfaceDark">#ffffff</color>
+    <color name="colorOnPrimaryDark">#ffffff</color>
+    <color name="colorOnSecondaryDark">#022249</color>
+    <color name="colorOnBackgroundDark">#022249</color>
+    <color name="colorOnSurfaceDark">#BCD6F4</color>
+    <color name="colorErrorDark">#B00020</color>
+    <color name="colorOnErrorDark">#FFFFFF</color>
+</resources>
