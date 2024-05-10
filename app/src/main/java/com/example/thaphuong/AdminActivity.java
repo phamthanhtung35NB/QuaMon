@@ -1,7 +1,6 @@
 package com.example.thaphuong;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,6 +20,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.thaphuong.Admin.LichSuAdminFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.squareup.picasso.Picasso;
@@ -29,7 +29,7 @@ import org.jetbrains.annotations.NotNull;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class MainActivity extends AppCompatActivity {
+public class AdminActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private BottomNavigationView bottomNavigationView;
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_admin);
         init(savedInstanceState);
         addEvent();
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
@@ -62,8 +62,8 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open_nav, R.string.close_nav);
         if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
-            navigationView.setCheckedItem(R.id.navHome);
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new LichSuAdminFragment()).commit();
+            navigationView.setCheckedItem(R.id.navLichSu2);
         }
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
@@ -76,22 +76,19 @@ public class MainActivity extends AppCompatActivity {
         textEmail = headerView.findViewById(R.id.textEmail);
         if (!profilePic.isEmpty()&&profilePic!=null&&profilePic.length()>0){
             Picasso.get().load(profilePic).into(imageLogoAvatar);
+        }else {
+            imageLogoAvatar.setImageResource(R.drawable.aklogo);
         }
-
-
-        replaceFragment(new HomeFragment(), true);
-        replaceFragment(new HomeFragment(), false);
-        Toast.makeText(MainActivity.this, "Welcome", Toast.LENGTH_SHORT).show();
+        replaceFragment(new LichSuAdminFragment(), true);
+        Toast.makeText(AdminActivity.this, "Welcome", Toast.LENGTH_SHORT).show();
     }
     void addEvent() {
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NotNull MenuItem item) {
                 int itemId = item.getItemId();
-                if (itemId == R.id.navHome){
-                    replaceFragment(new HomeFragment(), false);
-                }else if(itemId==R.id.navLichSu){
-                    replaceFragment(new LichSuFragment(), false);
+                if(itemId==R.id.navLichSu2){
+                    replaceFragment(new LichSuAdminFragment(), false);
                 }
                 return true;
             }
@@ -99,12 +96,12 @@ public class MainActivity extends AppCompatActivity {
         // Xử lý sự kiện khi click vào một item trong NavigationView thanh bên
         navigationView.setNavigationItemSelectedListener(item -> {
             int itemId = item.getItemId();
-            if (itemId == R.id.nav_header_home) {
-                replaceFragment(new HomeFragment(), false);
+            if (itemId == R.id.nav_header_home2) {
+                replaceFragment(new LichSuAdminFragment(), false);
             } else if (itemId == R.id.nav_header_settings) {
 
             } else if (itemId == R.id.nav_header_share) {
-                Toast.makeText(MainActivity.this, "Share", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AdminActivity.this, "Share", Toast.LENGTH_SHORT).show();
 
             } else if (itemId == R.id.nav_header_feedback) {
                 //mở link liên kết github

@@ -1,17 +1,20 @@
-package com.example.thaphuong;
+package com.example.thaphuong.Admin;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 import com.example.thaphuong.Adapter.AdapterLS;
 import com.example.thaphuong.Class.LS;
+import com.example.thaphuong.R;
+import com.example.thaphuong.StartActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -22,13 +25,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class LichSuFragment extends Fragment {
+public class LichSuAdminFragment extends Fragment {
     private DatabaseReference dbRef;
-    static private List<LS> listLS = new ArrayList<>();
-    AdapterLS adapterLS = new AdapterLS(listLS, getActivity());
+    static private List<LS> listLSAdmin = new ArrayList<>();
+    AdapterLsAdmin adapterLsAdmin = new AdapterLsAdmin(listLSAdmin, this.getActivity());
     RecyclerView postsRecyclerView;
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_lich_su, container, false);
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("dataLogin", getActivity().MODE_PRIVATE);
+        String email = sharedPreferences.getString("email", "");
+        String password = sharedPreferences.getString("password", "");
+        String uid = sharedPreferences.getString("uid", "");
+        if ((email.equals("") || password.equals(""))&& uid.length()>1) {
+            // quay lại màn hình Start
+            Intent intent = new Intent(getActivity(), StartActivity.class);
+            startActivity(intent);
+        }
         init(view);
         addEvents(view);
         getLS();
@@ -37,9 +49,9 @@ public class LichSuFragment extends Fragment {
     void init(View view) {
         postsRecyclerView = view.findViewById(R.id.postsRecyclerView);
         postsRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        postsRecyclerView.setAdapter(adapterLS) ;
+        postsRecyclerView.setAdapter(adapterLsAdmin) ;
         //hiêểu thị thông báo cuối
-        postsRecyclerView.scrollToPosition(listLS.size() - 1);
+        postsRecyclerView.scrollToPosition(listLSAdmin.size() - 1);
     }
     void addEvents(View view) {
     }
@@ -53,7 +65,7 @@ public class LichSuFragment extends Fragment {
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                listLS.clear();
+                listLSAdmin.clear();
                 for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
                     // Lấy key (day1)
                     String key = postSnapshot.getKey();
@@ -70,13 +82,13 @@ public class LichSuFragment extends Fragment {
 
                     LS post = new LS(content, university, name, key);
                     System.out.println("name: " + name + " content: " + content + " university: " + university + " key: " + key);
-                    listLS.add(post);
+                    listLSAdmin.add(post);
                 }
-                System.out.println("listLS.size(): " + listLS.size());
-                adapterLS.updateList(listLS);
-                postsRecyclerView.setAdapter(adapterLS);
+                System.out.println("listLS.size(): " + listLSAdmin.size());
+                adapterLsAdmin.updateList(listLSAdmin);
+                postsRecyclerView.setAdapter(adapterLsAdmin);
                 //hiêểu thị thông báo cuối
-                postsRecyclerView.scrollToPosition(listLS.size() - 1);
+                postsRecyclerView.scrollToPosition(listLSAdmin.size() - 1);
             }
 
             @Override

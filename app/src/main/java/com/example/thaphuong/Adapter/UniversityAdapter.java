@@ -1,4 +1,4 @@
-package com.example.thaphuong;
+package com.example.thaphuong.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.thaphuong.DataUniversity.University;
+import com.example.thaphuong.R;
 
 import java.util.List;
 
