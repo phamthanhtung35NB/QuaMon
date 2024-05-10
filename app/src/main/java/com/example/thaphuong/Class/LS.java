@@ -1,6 +1,7 @@
 package com.example.thaphuong.Class;
 
 public class LS {
+    private String keyIn;
     private String content;
     private String university;
     private String name;
@@ -9,11 +10,12 @@ public class LS {
     public LS() {
     }
 
-    public LS(String content, String university, String name, String key) {
+    public LS(String content, String university, String name, String key,String keyIn) {
         this.content = content;
         this.university = university;
         this.name = name;
         this.key = key;
+        this.keyIn = keyIn;
     }
 
     public String getContent() {
@@ -48,5 +50,13 @@ public class LS {
 
     public void setKey(String key) {
         this.key = key;
+    }
+
+    public String getKeyIn() {
+        return keyIn;
+    }
+
+    public void setKeyIn(String keyIn) {
+        this.keyIn = keyIn;
     }
 }

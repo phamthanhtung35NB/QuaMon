@@ -44,6 +44,7 @@ public class LichSuFragment extends Fragment {
     void addEvents(View view) {
     }
     private void getLS(){
+
         // Lấy một tham chiếu đến cơ sở dữ liệu
         dbRef = FirebaseDatabase.getInstance().getReference();
 
@@ -57,6 +58,7 @@ public class LichSuFragment extends Fragment {
                 for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
                     // Lấy key (day1)
                     String key = postSnapshot.getKey();
+                    String keyIn = postSnapshot.child("keyIN").getValue(String.class);
 
                     // Lấy dữ liệu từng biến một
 //                    private String content;
@@ -68,7 +70,7 @@ public class LichSuFragment extends Fragment {
                     String university = postSnapshot.child("university").getValue(String.class);
 
 
-                    LS post = new LS(content, university, name, key);
+                    LS post = new LS(content, university, name, key,keyIn);
                     System.out.println("name: " + name + " content: " + content + " university: " + university + " key: " + key);
                     listLS.add(post);
                 }

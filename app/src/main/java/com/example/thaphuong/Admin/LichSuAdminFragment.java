@@ -28,10 +28,11 @@ import java.util.List;
 public class LichSuAdminFragment extends Fragment {
     private DatabaseReference dbRef;
     static private List<LS> listLSAdmin = new ArrayList<>();
-    AdapterLsAdmin adapterLsAdmin = new AdapterLsAdmin(listLSAdmin, this.getActivity());
+    AdapterLsAdmin adapterLsAdmin;
     RecyclerView postsRecyclerView;
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_lich_su, container, false);
+        adapterLsAdmin = new AdapterLsAdmin(listLSAdmin, getActivity());
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("dataLogin", getActivity().MODE_PRIVATE);
         String email = sharedPreferences.getString("email", "");
         String password = sharedPreferences.getString("password", "");
@@ -69,6 +70,7 @@ public class LichSuAdminFragment extends Fragment {
                 for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
                     // Lấy key (day1)
                     String key = postSnapshot.getKey();
+                    String keyIn = postSnapshot.child("keyIN").getValue(String.class);
 
                     // Lấy dữ liệu từng biến một
 //                    private String content;
@@ -80,7 +82,7 @@ public class LichSuAdminFragment extends Fragment {
                     String university = postSnapshot.child("university").getValue(String.class);
 
 
-                    LS post = new LS(content, university, name, key);
+                    LS post = new LS(content, university, name, key,keyIn);
                     System.out.println("name: " + name + " content: " + content + " university: " + university + " key: " + key);
                     listLSAdmin.add(post);
                 }

@@ -131,9 +131,18 @@ public class HomeFragment extends Fragment {
 
     DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference();
 
+        // Lấy thời điểm hiện tại
+        Date now = new Date();
+
+// Lấy số mili giây từ thời điểm hiện tại
+        long millis = now.getTime();
+
+// In số mili giây ra màn hình
+        System.out.println(millis);
+
     Content itemPush = new Content(content, uneversity, name, currentDateTimeString);
     System.out.println(itemPush.getContent());
     System.out.println(currentDateTimeString);
-    dbRef.child(currentDateTimeString).setValue(itemPush);
+    dbRef.child(currentDateTimeString+""+millis).setValue(itemPush);
 }
 }

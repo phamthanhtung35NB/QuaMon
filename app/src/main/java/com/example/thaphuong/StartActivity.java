@@ -12,6 +12,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.thaphuong.Admin.LoginActivity;
 
+import java.util.Date;
+
 public class StartActivity extends AppCompatActivity {
 
     Button  buttonStart, buttonLogin;
@@ -27,7 +29,7 @@ public class StartActivity extends AppCompatActivity {
             startActivity(intent);
         });
         buttonLogin.setOnClickListener(v -> {
-            Intent intent = new Intent(StartActivity.this, LoginActivity.class);
+                        Intent intent = new Intent(StartActivity.this, LoginActivity.class);
             startActivity(intent);
         });
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
